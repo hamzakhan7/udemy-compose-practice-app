@@ -1,16 +1,14 @@
-package com.hamzak.android.mealz
+package com.hamzak.android.mealz.ui.meals
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.hamzak.android.mealz.ui.theme.MealzTheme
 
 class MainActivity : ComponentActivity() {
@@ -19,29 +17,23 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             MealzTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+                CategoriesScreen()
             }
         }
     }
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
+fun CategoriesScreen(modifier: Modifier = Modifier) {
+    val viewModel : CategoriesViewModel = viewModel()
+
     Text(
-        text = "Hello $name!",
-        modifier = modifier
+        text = "Hello Android!",
     )
 }
 
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    MealzTheme {
-        Greeting("Android")
-    }
+    CategoriesScreen()
 }
